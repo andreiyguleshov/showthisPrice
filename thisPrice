@@ -1,0 +1,19 @@
+ $("body").on("click", ".show_this_price", function ()
+    {
+        var data = {};
+        data.value = { 0: $(this).val() };
+        data.id = $(this)
+            .parents("tr")
+            .attr("data-id");
+        data.code = "SHOW_THIS_PRICE";
+        code = "edit_one";
+
+        $.ajax({
+            url: "/local/components/cod/pro/ajax.php",
+            type: "POST",
+            data: { data: data, code: code }
+        }).done(function ()
+        {
+            console.log("success");
+        });
+    });
